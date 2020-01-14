@@ -30,7 +30,7 @@ with open(listaips) as ips:
             hostname = hostname.strip().replace('name: ', '').lower()
 
             #criando arquivo de backup
-            filen= open(hostname+".cfg", 'w')
+            filen= open(hostname+".rsc", 'w')
             filen.write(output)
             filen.close()
 
