@@ -2,15 +2,15 @@
 from netmiko import Netmiko
 import os
 
-listaips = "C:/Users/leand/Documents/Redes/listaips/ips.txt"
-dir_backup = "C:/Users/leand/Documents/Redes/backup"
+listaips = "/home/jor/Redes/listaips/ips.txt"
+dir_backup = "/home/jor/Redes/backup"
 
 with open(listaips) as ips:
    for cnt, ip in enumerate(ips):
         print(ip)
 
         try:
-            #dados da conexão do equipamento
+            #dados da conexao do equipamento
             plataforma = {
                 "host": ip,
                 "username": "admin",
@@ -18,7 +18,7 @@ with open(listaips) as ips:
                 "device_type": "linux",
             }
 
-            #conexão e comandos via ssh
+            #conexao e comandos via ssh
             net_connect = Netmiko(**plataforma)
             print(net_connect.find_prompt())
             output = net_connect.send_command("cat /tmp/system.cfg")
