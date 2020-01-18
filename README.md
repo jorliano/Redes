@@ -12,4 +12,4 @@ edit a variavel path no codigo para o local onde vai ser armazenado os backups e
  usando o nano adicione o codigo a baixo
 #rodar o scrip uma vez por semana no domingo as 23 h e 59 min
  59 23 * * 0 python local do script
- 59 23 * * 0 python local do script
+ 59 23 * * 0 python local do scriptls

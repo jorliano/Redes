@@ -38,7 +38,7 @@ with open(path_ips) as ips:
             hostname = hostname.strip().replace('name: ', '').lower()
 
             #criando arquivo de backup
-            filen= open(hostname+".rsc", 'w')
+            filen= open(dir_backup+"/"+hostname+".rsc", 'w')
             filen.write(output)
             filen.close()
 
