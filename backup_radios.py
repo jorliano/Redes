@@ -2,10 +2,20 @@
 from netmiko import Netmiko
 import os
 
-listaips = "/home/jor/Redes/listaips/ips.txt"
-dir_backup = "/home/jor/Redes/backup"
+path = "/home/jor/backup_radio"
+path_ips = path+"/ips.txt"
+dir_backup = path+"/backups"
 
-with open(listaips) as ips:
+# cria diretorios caso nao exista
+if not os.path.exists(path):
+    os.mkdir(path)
+    os.mkdir(dir_backup)
+    file_ips = open(path_ips, 'w')
+    file_ips.write("192.168.1.20")
+    file_ips.close()
+
+
+with open(path_ips) as ips:
    for cnt, ip in enumerate(ips):
         print(ip)
 
@@ -25,12 +35,10 @@ with open(listaips) as ips:
             hostname = net_connect.send_command("cat /proc/sys/kernel/hostname")
             net_connect.disconnect()
 
-            #definindo diretorio dos backups
-            os.chdir(dir_backup)
             hostname = hostname.strip().lower()
 
             #criando arquivo de backup
-            filen= open(hostname+".cfg", 'w')
+            filen= open(dir_backup+"/"+hostname+".cfg", 'w')
             filen.write(output)
             filen.close()
 
