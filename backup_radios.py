@@ -2,9 +2,9 @@
 from netmiko import Netmiko
 import os
 
-path = "/home/jor/backup_radio"
-path_ips = path+"/ips.txt"
-dir_backup = path+"/backups"
+path = os.path.join(os.getcwd(),"radios")
+path_ips = os.path.join(path,"ips.txt")
+dir_backup = os.path.join(path,"backups")
 
 # cria diretorios caso nao exista
 if not os.path.exists(path):
